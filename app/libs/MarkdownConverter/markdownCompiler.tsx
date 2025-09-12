@@ -21,7 +21,7 @@ export const markdownCompiler: Processor<
   undefined,
   undefined,
   undefined,
-  readonly [ReactNode, Root]
+  [ReactNode, Root]
 > = unified()
   // ASTの作成
   .use(remarkParse)

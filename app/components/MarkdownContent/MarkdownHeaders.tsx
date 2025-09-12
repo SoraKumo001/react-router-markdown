@@ -16,12 +16,14 @@ export const MarkdownHeaders: FC<{ tree: Root }> = ({ tree }) => {
     return titles;
   }, [tree]);
   return (
-    <ul className="sticky bottom-0 left-full z-10 h-60 w-80 overflow-y-scroll rounded bg-white/80 p-2 text-sm">
-      {headers.map(({ id, text, depth }) => (
-        <li key={id} style={{ left: `${depth * 16}px` }}>
-          <a href={`#${text}`}>{text}</a>
-        </li>
-      ))}
-    </ul>
+    headers.length > 0 && (
+      <ul className="sticky bottom-0 left-full z-10 h-60 w-80 overflow-y-auto rounded bg-white/90 p-2 text-sm">
+        {headers.map(({ id, text, depth }) => (
+          <li key={id} style={{ marginLeft: `${depth * 16}px` }}>
+            <a href={`#${text}`}>{text}</a>
+          </li>
+        ))}
+      </ul>
+    )
   );
 };

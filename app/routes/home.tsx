@@ -13,7 +13,7 @@ const Page = () => {
   const [, startTransition] = useTransition();
   return (
     <div className="flex h-screen gap-2 divide-x divide-blue-100 overflow-hidden p-2">
-      <div className="flex-1 rounded border border-gray-200">
+      <div className="flex-1 overflow-hidden rounded border border-gray-200">
         <MarkdownEditor
           refEditor={refEditor}
           value={content}
