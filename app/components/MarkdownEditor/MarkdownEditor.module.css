@@ -1,0 +1,6 @@
+@reference "tailwindcss";
+.markdown-editor {
+  :global(.active-line-number) {
+    @apply bg-blue-200;
+  }
+}

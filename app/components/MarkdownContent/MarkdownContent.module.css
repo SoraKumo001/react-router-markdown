@@ -1,0 +1,100 @@
+@reference "tailwindcss";
+.markdown {
+  @apply px-2;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-bold border-b-1 mb-2;
+  }
+  [data-depth="2"] {
+    @apply ml-4;
+  }
+  [data-depth="3"] {
+    @apply ml-8;
+  }
+  [data-depth="4"] {
+    @apply ml-4;
+  }
+  [data-depth="5"] {
+    @apply ml-8;
+  }
+  [data-depth="6"] {
+    @apply ml-8;
+  }
+  h1 {
+    @apply text-4xl;
+  }
+  h2 {
+    @apply text-3xl ml-4;
+  }
+  h3 {
+    @apply text-2xl ml-8;
+  }
+  h4 {
+    @apply text-xl ml-12;
+  }
+  h5 {
+    @apply text-lg ml-16;
+  }
+  h6 {
+    @apply text-base ml-20;
+  }
+  p {
+    @apply leading-relaxed p-0.5;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  li,
+  tr,
+  :global(.token-line) {
+    @apply relative;
+  }
+  em {
+    @apply italic;
+  }
+  b {
+    @apply font-bold;
+  }
+  strong {
+    @apply font-bold;
+  }
+  [data-inline-code] {
+    @apply inline-block bg-black/5 px-1 rounded;
+  }
+  a {
+    @apply underline text-blue-700;
+  }
+  :global(.inner-link) {
+    @apply no-underline text-base;
+  }
+  table {
+    @apply rounded border;
+  }
+  td,
+  th {
+    @apply px-2;
+  }
+  th {
+    @apply border-b;
+  }
+  td {
+    @apply border border-black/20;
+  }
+  li {
+    @apply ml-[1em] list-disc py-0.5;
+  }
+  img,
+  canvas {
+    margin: 0 auto;
+    max-width: 80%;
+    height: auto;
+  }
+}
