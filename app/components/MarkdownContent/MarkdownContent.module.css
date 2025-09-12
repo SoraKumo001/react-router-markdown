@@ -97,4 +97,11 @@
     max-width: 80%;
     height: auto;
   }
+  [data-line] {
+    @apply relative;
+  }
+  [data-line]::after {
+    @apply absolute -inset-0.5 w-full rounded pointer-events-none z-10 bg-blue-300/10 invisible border-b-blue-300 border-b-2 border-dotted;
+    content: "";
+  }
 }

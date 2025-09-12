@@ -1,6 +1,6 @@
 import { useRef, useState, useTransition } from "react";
 import type { OnMount } from "@monaco-editor/react";
-import { Markdown } from "~/components/MarkdownContent";
+import { MarkdownContext } from "~/components/MarkdownContent";
 import { MarkdownEditor } from "~/components/MarkdownEditor";
 
 const initText = "";
@@ -44,7 +44,7 @@ const Page = () => {
         ref={refMarkdown}
         className="flex-1 overflow-auto rounded border-2 border-gray-200"
       >
-        <Markdown
+        <MarkdownContext
           markdown={content}
           line={currentLine}
           onClick={(line, offset) => {

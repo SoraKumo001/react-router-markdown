@@ -14,7 +14,9 @@ export const rehypeAddLineNumber: Plugin = () => {
       (node) => {
         const start = node.position?.start?.line;
         const end = node.position?.end?.line;
-        if (start && end) {
+        if (node.tagName === "code") {
+        }
+        if (start && end && !node.properties["data-inline-code"]) {
           node.properties = {
             ...node.properties,
             ["data-line"]: start,

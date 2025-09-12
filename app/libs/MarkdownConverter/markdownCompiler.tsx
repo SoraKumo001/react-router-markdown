@@ -4,17 +4,25 @@ import remarkBreaks from "remark-breaks";
 import remarkGfm from "remark-gfm";
 import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
-import { unified } from "unified";
+import { unified, type Processor } from "unified";
+import { compilerResultTree } from "./plugins/compilerResultTree";
 import { rehypeAddLineNumber } from "./plugins/rehypeAddLineNumber";
 import { rehypeAddTargetBlank } from "./plugins/rehypeAddTargetBlank";
 import { rehypeReactOptions } from "./plugins/rehypeReactOptions";
-import { remarkAST } from "./plugins/remarkAST";
 import { remarkCode } from "./plugins/remarkCode";
 import { remarkDepth } from "./plugins/remarkDepth";
 import { remarkEmptyParagraphs } from "./plugins/remarkEmptyParagraphs";
 import { remarkHeadingId } from "./plugins/remarkHeadingId";
+import type { Root } from "mdast";
+import type { ReactNode } from "react";
 
-export const markdownCompiler = unified()
+export const markdownCompiler: Processor<
+  undefined,
+  undefined,
+  undefined,
+  undefined,
+  readonly [ReactNode, Root]
+> = unified()
   // ASTの作成
   .use(remarkParse)
   // 表やテキスト中のリンクなど変換を追加
@@ -28,7 +36,6 @@ export const markdownCompiler = unified()
   // コードブロックに追加情報を加える
   .use(remarkCode)
   // ノードに対してヘッダーに対応するインデント用の深度情報を与える
-  .use(remarkAST)
   .use(remarkDepth)
   // HAST(HTML用のASTに変換)
   .use(remarkRehype, {
@@ -41,4 +48,6 @@ export const markdownCompiler = unified()
   // aタグにtarget="_blank"を設定
   .use(rehypeAddTargetBlank)
   // Reactコンポーネントに変換
-  .use(rehypeReact, rehypeReactOptions);
+  .use(rehypeReact, rehypeReactOptions)
+  // 出力情報を[Reactコンポーネント,MdastTree]の形式に変換
+  .use(compilerResultTree);
