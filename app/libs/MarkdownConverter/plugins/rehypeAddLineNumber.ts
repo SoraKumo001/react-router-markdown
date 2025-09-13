@@ -1,7 +1,6 @@
 import { visit } from "unist-util-visit";
 import type { Root } from "hast";
 import type { Plugin } from "unified";
-import type { VFile } from "vfile";
 
 /**
  *  各ノードに行番号とカーソル位置の情報を埋め込む
